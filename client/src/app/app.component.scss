@@ -1,0 +1,25 @@
+.app-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+  overflow-y: auto;
+  
+  &.authenticated {
+    margin-left: 0;
+    
+    @media (min-width: 768px) {
+      margin-left: 250px;
+    }
+  }
+  
+  &:not(.authenticated) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  }
+}
