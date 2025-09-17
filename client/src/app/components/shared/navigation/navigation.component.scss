@@ -1,0 +1,280 @@
+// Desktop Sidebar
+.sidenav-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100vh;
+  z-index: 1000;
+}
+
+.sidenav {
+  width: 250px;
+  background: #2c3e50;
+  color: white;
+  
+  .sidenav-header {
+    padding: 20px;
+    background: #34495e;
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      
+      mat-icon {
+        color: #3498db;
+        font-size: 24px;
+        width: 24px;
+        height: 24px;
+      }
+    }
+    
+    .user-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      
+      .user-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        overflow: hidden;
+        
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+        
+        .avatar-placeholder {
+          width: 100%;
+          height: 100%;
+          background: #3498db;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: 600;
+          font-size: 14px;
+        }
+      }
+      
+      .user-details {
+        flex: 1;
+        
+        .user-name {
+          font-weight: 500;
+          font-size: 14px;
+        }
+        
+        .user-role {
+          font-size: 12px;
+          color: #bdc3c7;
+          text-transform: capitalize;
+        }
+      }
+    }
+  }
+  
+  .nav-list {
+    padding: 0;
+    
+    .nav-item {
+      color: #ecf0f1;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      
+      &:hover {
+        background: rgba(52, 152, 219, 0.1);
+        color: #3498db;
+      }
+      
+      &.active-link {
+        background: #3498db;
+        color: white;
+        
+        mat-icon {
+          color: white;
+        }
+      }
+      
+      &.logout-item {
+        color: #e74c3c;
+        
+        &:hover {
+          background: rgba(231, 76, 60, 0.1);
+        }
+      }
+      
+      mat-icon {
+        color: #bdc3c7;
+        margin-right: 12px;
+      }
+    }
+  }
+}
+
+// Mobile Header
+.mobile-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1001;
+  
+  .toolbar-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    
+    mat-icon {
+      font-size: 20px;
+      width: 20px;
+      height: 20px;
+    }
+  }
+  
+  .spacer {
+    flex: 1;
+  }
+  
+  .user-avatar-small {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    overflow: hidden;
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .avatar-placeholder-small {
+      width: 100%;
+      height: 100%;
+      background: #3498db;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 12px;
+      color: white;
+    }
+  }
+}
+
+// Mobile Sidenav
+.mobile-sidenav-container {
+  position: fixed;
+  top: 64px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+}
+
+.mobile-sidenav {
+  width: 280px;
+  background: #2c3e50;
+  color: white;
+  
+  .mobile-sidenav-header {
+    padding: 20px;
+    background: #34495e;
+    
+    .user-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      
+      .user-avatar {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        overflow: hidden;
+        
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+        
+        .avatar-placeholder {
+          width: 100%;
+          height: 100%;
+          background: #3498db;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: 600;
+          font-size: 16px;
+        }
+      }
+      
+      .user-details {
+        flex: 1;
+        
+        .user-name {
+          font-weight: 500;
+          font-size: 16px;
+        }
+        
+        .user-role {
+          font-size: 14px;
+          color: #bdc3c7;
+          text-transform: capitalize;
+        }
+      }
+    }
+  }
+  
+  .nav-item {
+    color: #ecf0f1;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    
+    &:hover {
+      background: rgba(52, 152, 219, 0.1);
+      color: #3498db;
+    }
+    
+    &.logout-item {
+      color: #e74c3c;
+      
+      &:hover {
+        background: rgba(231, 76, 60, 0.1);
+      }
+    }
+    
+    mat-icon {
+      color: #bdc3c7;
+      margin-right: 12px;
+    }
+  }
+}
+
+// Responsive utilities
+@media (max-width: 768px) {
+  .desktop-only {
+    display: none;
+  }
+  
+  .mobile-only {
+    display: block;
+  }
+}
+
+@media (min-width: 769px) {
+  .desktop-only {
+    display: block;
+  }
+  
+  .mobile-only {
+    display: none;
+  }
+}
