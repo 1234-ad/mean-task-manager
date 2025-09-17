@@ -1,0 +1,35 @@
+{
+  "name": "mean-task-manager",
+  "version": "1.0.0",
+  "description": "A complete MEAN stack task management application with real-time updates",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "client": "cd client && ng serve",
+    "server": "nodemon server.js",
+    "build": "cd client && ng build",
+    "install-client": "cd client && npm install",
+    "heroku-postbuild": "npm run install-client && npm run build"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^7.5.0",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "socket.io": "^4.7.2",
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^6.9.4",
+    "express-rate-limit": "^6.10.0",
+    "helmet": "^7.0.0",
+    "express-validator": "^7.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "keywords": ["mean", "mongodb", "express", "angular", "nodejs", "task-management"],
+  "author": "Your Name",
+  "license": "MIT"
+}
