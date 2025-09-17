@@ -1,0 +1,7 @@
+<div class="app-container">
+  <app-navigation *ngIf="authService.isAuthenticated()"></app-navigation>
+  
+  <main class="main-content" [class.authenticated]="authService.isAuthenticated()">
+    <router-outlet></router-outlet>
+  </main>
+</div>
