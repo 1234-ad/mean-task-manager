@@ -1,0 +1,112 @@
+<!-- Desktop Sidebar -->
+<mat-sidenav-container class="sidenav-container desktop-only">
+  <mat-sidenav mode="side" opened class="sidenav">
+    <div class="sidenav-header">
+      <div class="logo">
+        <mat-icon>task_alt</mat-icon>
+        <span>Task Manager</span>
+      </div>
+      
+      <div class="user-info" *ngIf="currentUser">
+        <div class="user-avatar">
+          <img *ngIf="currentUser.avatar" [src]="currentUser.avatar" [alt]="currentUser.name">
+          <div *ngIf="!currentUser.avatar" class="avatar-placeholder">
+            {{ getUserInitials() }}
+          </div>
+        </div>
+        <div class="user-details">
+          <div class="user-name">{{ currentUser.name }}</div>
+          <div class="user-role">{{ currentUser.role | titlecase }}</div>
+        </div>
+      </div>
+    </div>
+
+    <mat-nav-list class="nav-list">
+      <mat-list-item *ngFor="let item of menuItems" 
+                     [routerLink]="item.route" 
+                     routerLinkActive="active-link"
+                     class="nav-item">
+        <mat-icon matListIcon>{{ item.icon }}</mat-icon>
+        <span matLine>{{ item.label }}</span>
+      </mat-list-item>
+      
+      <mat-divider></mat-divider>
+      
+      <mat-list-item class="nav-item logout-item" (click)="logout()">
+        <mat-icon matListIcon>logout</mat-icon>
+        <span matLine>Logout</span>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+</mat-sidenav-container>
+
+<!-- Mobile Header -->
+<mat-toolbar class="mobile-header mobile-only" color="primary">
+  <button mat-icon-button (click)="toggleMenu()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  
+  <span class="toolbar-title">
+    <mat-icon>task_alt</mat-icon>
+    Task Manager
+  </span>
+  
+  <span class="spacer"></span>
+  
+  <button mat-icon-button [matMenuTriggerFor]="userMenu" *ngIf="currentUser">
+    <div class="user-avatar-small">
+      <img *ngIf="currentUser.avatar" [src]="currentUser.avatar" [alt]="currentUser.name">
+      <div *ngIf="!currentUser.avatar" class="avatar-placeholder-small">
+        {{ getUserInitials() }}
+      </div>
+    </div>
+  </button>
+</mat-toolbar>
+
+<!-- Mobile Menu -->
+<mat-sidenav-container class="mobile-sidenav-container mobile-only" *ngIf="isMenuOpen">
+  <mat-sidenav mode="over" [opened]="isMenuOpen" (closed)="isMenuOpen = false" class="mobile-sidenav">
+    <div class="mobile-sidenav-header">
+      <div class="user-info" *ngIf="currentUser">
+        <div class="user-avatar">
+          <img *ngIf="currentUser.avatar" [src]="currentUser.avatar" [alt]="currentUser.name">
+          <div *ngIf="!currentUser.avatar" class="avatar-placeholder">
+            {{ getUserInitials() }}
+          </div>
+        </div>
+        <div class="user-details">
+          <div class="user-name">{{ currentUser.name }}</div>
+          <div class="user-role">{{ currentUser.role | titlecase }}</div>
+        </div>
+      </div>
+    </div>
+
+    <mat-nav-list>
+      <mat-list-item *ngFor="let item of menuItems" 
+                     (click)="navigateTo(item.route)"
+                     class="nav-item">
+        <mat-icon matListIcon>{{ item.icon }}</mat-icon>
+        <span matLine>{{ item.label }}</span>
+      </mat-list-item>
+      
+      <mat-divider></mat-divider>
+      
+      <mat-list-item class="nav-item logout-item" (click)="logout()">
+        <mat-icon matListIcon>logout</mat-icon>
+        <span matLine>Logout</span>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+</mat-sidenav-container>
+
+<!-- User Menu (Mobile) -->
+<mat-menu #userMenu="matMenu">
+  <button mat-menu-item routerLink="/profile">
+    <mat-icon>person</mat-icon>
+    <span>Profile</span>
+  </button>
+  <button mat-menu-item (click)="logout()">
+    <mat-icon>logout</mat-icon>
+    <span>Logout</span>
+  </button>
+</mat-menu>
